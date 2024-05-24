@@ -1,0 +1,65 @@
+
+
+#cursor-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999; /* Ensure container is on top */
+}
+
+#cursor, #cursor-ring {
+  position: absolute;
+  pointer-events: none; /* Ensure the custom cursor doesn't interfere with element interaction */
+}
+
+#cursor {
+  width: 20px;
+  height: 20px;
+  background-color: rgb(200, 184, 7);
+  border-radius: 50%;
+  animation: pulse 1s infinite alternate;
+  z-index: 10000; /* Ensure cursor is on top */
+}
+
+#cursor-ring {
+  width: 50px;
+  height: 50px;
+  border: 2px solid rgba(95, 5, 5, 0.97);
+  border-radius: 50%;
+  animation: spin 2s infinite linear, moveRing 3s infinite alternate;
+  z-index: 9999; /* Ensure ring is just below the cursor */
+}
+
+#cursor.active, #cursor-ring.active {
+  transform: scale(0.8);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes moveRing {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
